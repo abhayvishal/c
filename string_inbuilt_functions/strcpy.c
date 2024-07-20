@@ -1,6 +1,6 @@
 #include<stdio.h>
 #define n 20
-
+/*
 //pointing to the same location using pointers
 
 char *strcopy(char *str)
@@ -22,13 +22,13 @@ int main()
     printf("The copied string is: %s",strc);
 
     return 0;
-} 
+}  */
 
 //copying into separate memory by traversing
 
-/* void strcopyl(char *to,const char *from)
+void strcopyl(char *to,char *from)
 {
-    while((*to++ = *from++));
+    while(*to++ = *from++);
 }
 
 int main()
@@ -45,4 +45,5 @@ int main()
     printf("The copied string is: %s",strc);
 
     return 0;
-} */
+
+}

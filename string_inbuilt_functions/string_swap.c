@@ -18,10 +18,10 @@ int main()
     char str2[n];
 
     printf("Enter string 1: ");
-    scanf(" %[^\n]",str1);
+    scanf(" %[^\n]%*c",str1);
 
     printf("Enter string 2: ");
-    scanf(" %[^\n]",str2);
+    scanf("%[^\n]%*c",str2);
     
     //words swap
     printf("Before swapping :\n str1 = %s, str2 = %s\n",str1,str2);
