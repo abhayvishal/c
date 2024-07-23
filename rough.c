@@ -1,0 +1,14 @@
+// C program to illustrate the arithmatic operators
+#include <stdio.h>
+
+int main()
+{
+
+    int a = 25, b = 5;
+
+    // using operators and printing results
+
+    printf("+a = %d\n", +a);
+    printf("-a = %d\n", -a);
+    return 0;
+}
