@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void swap(int *a, int *b)
 {
     int temp = 0;
@@ -7,25 +6,25 @@ void swap(int *a, int *b)
     *a = *b;
     *b = temp;
 }
-
 void print(int n, int arr[][n])
 {
-
-    for (int i = 0; i < (2 * n) - 1; i++)
+    for (int k = 0; k < n * n; k++)
     {
-        int start = (i < n) ? i : n - 1;
-        int end = (i < n) ? 0 : i - (n - 1);
-
-        while (start >= 0 && end < n)
+        int r = 0;
+        int c = 0;
+        for (int i = 0; i < 2 * n - 1; i++)
         {
-            int it = (i < n) ? i : (n * 2 - 2) - i;
+            int start = (i < n) ? i : n - 1;
+            int end = (i < n) ? 0 : i - (n - 1);
 
-            for (int j = 0; j < it; j++)
+            while (start >= 0 && end < n)
             {
-                if (arr[start][end] < arr[start - 1][end + 1])
+                if (arr[start][end] < arr[r][c])
                 {
-                    swap(&arr[start][end], &arr[start - 1][end + 1]);
+                    swap(&arr[start][end], &arr[r][c]);
                 }
+                r = start;
+                c = end;
                 start--;
                 end++;
             }

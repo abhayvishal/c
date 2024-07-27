@@ -1,4 +1,5 @@
 #include <stdio.h>
+// descending order
 
 void swap(int *a, int *b)
 {
@@ -11,23 +12,38 @@ void swap(int *a, int *b)
 void print(int n, int arr[][n])
 {
 
-    for (int i = 0; i < (2 * n) - 1; i++)
+    for (int k = 0; k < n * n; k++)
     {
-        int start = (i < n) ? i : n - 1;
-        int end = (i < n) ? 0 : i - (n - 1);
-
-        while (start >= 0 && end < n)
+        int r = 0;
+        int c = 0;
+        for (int i = 0; i < n * 2 - 1; i++)
         {
-            int it = (i < n) ? i : (n * 2 - 2) - i;
-
-            for (int j = 0; j < it; j++)
+            if (i < n)
             {
-                if (arr[start][end] < arr[start - 1][end + 1])
+                for (int j = 0; j <= i; j++)
                 {
-                    swap(&arr[start][end], &arr[start - 1][end + 1]);
+                    /* printf("%d ", arr[i - j][j]); */
+                    if (arr[i - j][j] > arr[r][c])
+                    {
+                        swap(&arr[i - j][j], &arr[r][c]);
+                    }
+
+                    r = i - j;
+                    c = j;
                 }
-                start--;
-                end++;
+            }
+            else
+            {
+                for (int j = n - 1; j > i - n; j--)
+                {
+                    /* printf("%d ", arr[j][i - j]); */
+                    if (arr[j][i - j] > arr[r][c])
+                    {
+                        swap(&arr[j][i - j], &arr[r][c]);
+                    }
+                    r = j;
+                    c = i - j;
+                }
             }
         }
     }

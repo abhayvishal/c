@@ -2,16 +2,21 @@
 
 void print(int n, int arr[][n])
 {
-    for (int i = 0; i < 2 * n - 1; i++)
+    for (int i = 0; i < n * 2 - 1; i++)
     {
-        int start = (i < n) ? i : n - 1;
-        int end = (i < n) ? 0 : i - (n - 1);
-
-        while (start >= 0 && end < n)
+        if (i < n)
         {
-            printf("%d ", arr[start][end]);
-            start--;
-            end++;
+            for (int j = 0; j <= i; j++)
+            {
+                printf("%d ", arr[i - j][j]);
+            }
+        }
+        else
+        {
+            for (int j = n - 1; j > i - n; j--)
+            {
+                printf("%d ", arr[j][i - j]);
+            }
         }
     }
 }
