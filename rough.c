@@ -1,46 +1,40 @@
 #include <stdio.h>
 
-#define rows 100
-#define cols 5
+void printSubsequence(int arr[], int start, int end, int subseq[], int subseq_size)
+{
+    // Print the subsequence
+    for (int i = 0; i < subseq_size; i++)
+    {
+        printf("%d ", subseq[i]);
+    }
+    printf("\n");
+}
+
+void generateSubsequences(int arr[], int start, int end, int subseq[], int subseq_size)
+{
+    // Print the subsequence if it's not empty
+    if (subseq_size > 0)
+    {
+        printSubsequence(arr, start, end, subseq, subseq_size);
+    }
+
+    // Generate subsequences including or excluding each element
+    for (int i = start; i < end; i++)
+    {
+        subseq[subseq_size] = arr[i];                                   // Include arr[i] in the subsequence
+        generateSubsequences(arr, i + 1, end, subseq, subseq_size + 1); // Recursively generate subsequences
+    }
+}
 
 int main()
 {
-    char mat[rows][cols];
+    int arr[] = {1, 2, 3};
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    int row = 0;
-    int col = 0;
-    char ch;
+    int subseq[n]; // Array to store the current subsequence
 
-    printf("Enter the string: ");
-    while (1)
-    {
-        ch = getchar();
-
-        if (ch == '\n')
-        {
-            break;
-        }
-
-        mat[row][col] = ch;
-        col++;
-
-        if (col == cols)
-        {
-            row++;
-            col = 0;
-        }
-    }
-
-    printf("Character entered: \n");
-    for (int i = 0; i <= row; i++)
-    {
-        for (int j = 0; j < cols; j++)
-        {
-            printf("%c ", mat[i][j]);
-        }
-
-        printf("\n");
-    }
+    // Generate all subsequences
+    generateSubsequences(arr, 0, n, subseq, 0);
 
     return 0;
 }
