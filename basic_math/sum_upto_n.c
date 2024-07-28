@@ -22,6 +22,10 @@ void print(int n)
             }
             else if (sum > n)
             {
+                if ((sum - j) < n)
+                {
+                    printf("%d ", n - (sum - j));
+                }
                 j--;
                 if (j > 0)
                 {
