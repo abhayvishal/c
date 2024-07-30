@@ -45,6 +45,10 @@ void comb(int arr[], int start, int end, int subseq[], int size, int target, int
         {
             subseq[size] = arr[i];
             comb(arr, i + 1, end, subseq, size + 1, target, sum + arr[i]);
+            while (arr[i] == arr[i + 1])
+            {
+                i++;
+            }
         }
     }
 }
