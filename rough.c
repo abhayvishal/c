@@ -1,40 +1,49 @@
 #include <stdio.h>
+#define len 1000
 
-void printSubsequence(int arr[], int start, int end, int subseq[], int subseq_size)
+int length(char *str)
 {
-    // Print the subsequence
-    for (int i = 0; i < subseq_size; i++)
+    int cnt = 0;
+    while (*str)
     {
-        printf("%d ", subseq[i]);
+        cnt++;
+        str++;
+    }
+    return cnt;
+}
+
+void print(char subseq[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%c", subseq[i]);
     }
     printf("\n");
 }
 
-void generateSubsequences(int arr[], int start, int end, int subseq[], int subseq_size)
+void sub(char *str, int start, int end, char *subseq, int size)
 {
-    // Print the subsequence if it's not empty
-    if (subseq_size > 0)
+    if (size >= 0)
     {
-        printSubsequence(arr, start, end, subseq, subseq_size);
+        print(subseq, size);
     }
 
-    // Generate subsequences including or excluding each element
     for (int i = start; i < end; i++)
     {
-        subseq[subseq_size] = arr[i];                                   // Include arr[i] in the subsequence
-        generateSubsequences(arr, i + 1, end, subseq, subseq_size + 1); // Recursively generate subsequences
+        subseq[size] = str[i];
+        sub(str, i + 1, end, subseq, size + 1);
     }
 }
 
 int main()
 {
-    int arr[] = {1, 2, 3};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    char str[len];
+    char subseq[len];
 
-    int subseq[n]; // Array to store the current subsequence
-
-    // Generate all subsequences
-    generateSubsequences(arr, 0, n, subseq, 0);
+    printf("Enter string: ");
+    scanf("%s", str);
+    int n = length(str);
+    sub(str, 0, n, subseq, 0);
 
     return 0;
 }
