@@ -23,11 +23,19 @@ void pattern(char *str, int n, int rows)
         cnt = 0;
         while (j < n)
         {
-            if ()
+            if (col % (rows - 1) == 0)
             {
+                printf("%c", str[j]);
+                j += (2 * rows) - 2 * (i + 1);
+                if ((2 * rows) - 2 * (i + 1) == 0)
+                {
+                    j += 2 * rows - 2;
+                }
             }
-            else if ()
+            else if (col % (rows - 1) == (rows - 1) - i)
             {
+                printf("%c", str[j]);
+                j += 2 * i;
             }
             else
             {
