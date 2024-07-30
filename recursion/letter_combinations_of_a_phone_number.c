@@ -11,15 +11,6 @@ int convertstoi(char *num, int arr[])
     return i;
 }
 
-void print(char *subseq, int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        printf("%c", subseq[i]);
-    }
-    printf("\n");
-}
-
 int length(char *str)
 {
     int cnt = 0;
@@ -31,11 +22,10 @@ int length(char *str)
     return cnt;
 }
 
-void phone(char str[20][10], int arr[], int start, int end, int cnt, char *subseq, int size)
+void phone(char str[][10], int arr[], int start, int end, int cnt, char *subseq, int size)
 {
     if (cnt == end)
     {
-        /* print(subseq, size); */
         printf("%s\n", subseq);
         return;
     }
