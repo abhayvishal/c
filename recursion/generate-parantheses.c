@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-void print(int start, int n, char *s, char *ans, int cnt0, int depth, int *index)
+void print(int n, char *ans, int cnt0, int cnt1, int depth)
 {
-    if (cnt0 == 2 * n)
+    if (depth == 2 * n)
     {
         for (int i = 0; i < depth; i++)
         {
@@ -11,19 +11,16 @@ void print(int start, int n, char *s, char *ans, int cnt0, int depth, int *index
         printf("\n");
         return;
     }
-    for (int i = start; i < 2; i++)
-    {
-        ans[depth] = s[i];
 
-        if (cnt0 < n)
-        {
-            start = 0;
-        }
-        else
-        {
-            start = 1;
-        }
-        print(start, n, s, ans, cnt0 + 1, depth + 1, index);
+    if (cnt0 < n)
+    {
+        ans[depth] = '(';
+        print(n, ans, cnt0 + 1, cnt1, depth + 1);
+    }
+    if (cnt1 < cnt0)
+    {
+        ans[depth] = ')';
+        print(n, ans, cnt0, cnt1 + 1, depth + 1);
     }
 }
 
@@ -34,6 +31,7 @@ int main()
     s[0] = '(';
     s[1] = ')';
     int cnt0 = 0;
+    int cnt1 = 0;
 
     int index = 0;
 
@@ -42,7 +40,7 @@ int main()
 
     char ans[n * 2];
 
-    print(0, n, s, ans, cnt0, 0, &index);
+    print(n, ans, cnt0, cnt1, 0);
 
     return 0;
 }
